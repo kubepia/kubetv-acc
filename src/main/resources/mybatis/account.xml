@@ -14,7 +14,6 @@
 		FROM user_info
 		WHERE user_email = #{userEmail} and user_pw = #{userPw}
     </select>
-
     <select id="getUser" resultType="kr.skb.g3.sam.samblueberryacc.account.CustomerVO">
 		SELECT 
 		user_name as userName
