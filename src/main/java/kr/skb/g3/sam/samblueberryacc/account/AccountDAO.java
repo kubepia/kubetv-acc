@@ -3,7 +3,7 @@ package kr.skb.g3.sam.samblueberryacc.account;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * AccountService
+ * AccountDAO
  */
 @Mapper
 public interface AccountDAO {
