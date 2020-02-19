@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 public class CustomerVO {
 
     private static final Logger logger = LoggerFactory.getLogger(CustomerVO.class);
-
+    
     CustomerVO(String userEmail, 
     String userPw,
     String userName,
