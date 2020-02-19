@@ -56,7 +56,7 @@ spec:
             subPath: "application.properties"
           ports:
           - name: tomcat
-            containerPort: 3000
+            containerPort: 8090
           livenessProbe:
             httpGet:
               path: /api/health
