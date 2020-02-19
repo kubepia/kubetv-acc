@@ -11,6 +11,7 @@ public interface AccountDAO {
         public CustomerVO getUser(String userEmail);
     
         public int updateUser(String userEmail, String userTel, String userNickName);
+        public int health();
     
     
 }

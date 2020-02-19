@@ -26,7 +26,6 @@ public class AccountController {
 
     @PostMapping(value = "/login")
     public @ResponseBody CustomerVO login(@RequestParam String userEmail, @RequestParam String userPw) {
-        // TODO: process POST request
         logger.info("loggin userEmail : {}", userEmail);
         CustomerVO user = this.dao.login(userEmail, userPw);
         return user;
@@ -34,7 +33,6 @@ public class AccountController {
 
     @GetMapping(value = "/user/{userEmail}")
     public @ResponseBody CustomerVO getUser(@PathVariable String userEmail) {
-        // TODO: process POST request
         logger.info("get userinfo : {}", userEmail);
         CustomerVO user = this.dao.getUser(userEmail);
         return user;
@@ -44,7 +42,6 @@ public class AccountController {
     public @ResponseBody CustomerVO updateUser(@RequestParam String userEmail, @RequestParam String userPw,
             @RequestParam String userName, @RequestParam String userNickName, @RequestParam String userTel,
             @RequestParam Boolean membership) {
-        // TODO: process POST request
         CustomerVO user = new CustomerVO(userEmail, userPw, userName, userNickName, userTel, membership);
         logger.info("update user : {}", user.toString());
         int number = this.dao.updateUser(userEmail, userTel, userNickName);
@@ -55,6 +52,11 @@ public class AccountController {
             return user;
         }
         
+    }
+    @GetMapping(value = "/health")
+    public @ResponseBody String health() {
+        this.dao.health();
+        return "ok";
     }
 
 }
