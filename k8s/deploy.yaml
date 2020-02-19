@@ -57,6 +57,18 @@ spec:
           ports:
           - name: tomcat
             containerPort: 3000
+          livenessProbe:
+            httpGet:
+              path: /api/health
+              port: tomcat
+            initialDelaySeconds: 3
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /api/health
+              port: tomcat
+            initialDelaySeconds: 1
+            periodSeconds: 3
           resources:
             requests:
               cpu: 300m
