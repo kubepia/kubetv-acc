@@ -1,0 +1,74 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: account-svc
+spec:
+  type: ClusterIP
+  selector:
+    app: account
+  ports:
+    - name: tomcat
+      port: 8090
+      targetPort: tomcat
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: account
+data:
+  application.properties: |-
+    logging.config=classpath:logback.xml
+    spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
+    spring.datasource.url=jdbc:mariadb://maria-acc-svc:4006/skb
+    spring.datasource.username=maxuser
+    spring.datasource.password=maxpwd
+    mybatis.mapper-locations=mybatis/*.xml
+    server.port=8090
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: account
+  labels:
+    app: account
+    version: v1
+spec:
+  selector:
+    matchLabels:
+      app: account
+      version: v1
+  replicas: 1
+  template:
+    metadata:
+      name: account
+      labels:
+        app: account
+        version: v1
+    spec:
+      containers:
+        - name: account
+          image: g3.skb:8500/btv/account:latest
+          imagePullPolicy: Always
+          volumeMounts:
+          - name: app-config
+            mountPath: /config/application.properties
+            subPath: "application.properties"
+          ports:
+          - name: tomcat
+            containerPort: 3000
+          resources:
+            requests:
+              cpu: 300m
+              memory: 500Mi
+            limits:
+              cpu: 1000m
+              memory: 2048Mi
+      volumes:
+      - name: app-config
+        configMap:
+          name: account
+          items:
+          - key: application.properties
+            path: application.properties
+            
