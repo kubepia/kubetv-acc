@@ -19,7 +19,7 @@ data:
   application.properties: |-
     logging.config=classpath:logback.xml
     spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
-    spring.datasource.url=jdbc:mariadb://maria-acc-svc:4006/skb
+    spring.datasource.url=jdbc:mariadb://maria-acc-svc.btv-backing:4006/skb
     spring.datasource.username=maxuser
     spring.datasource.password=maxpwd
     mybatis.mapper-locations=mybatis/*.xml
