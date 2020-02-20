@@ -22,7 +22,6 @@ public class AccountController {
 
     @Autowired
     private AccountDAO dao;
-    
 
     @PostMapping(value = "/login")
     public @ResponseBody CustomerVO login(@RequestParam String userEmail, @RequestParam String userPw) {
@@ -39,10 +38,10 @@ public class AccountController {
     }
 
     @PostMapping(value = "/user")
-    public @ResponseBody CustomerVO updateUser(@RequestParam String userEmail, @RequestParam String userPw,
-            @RequestParam String userName, @RequestParam String userNickName, @RequestParam String userTel,
-            @RequestParam Boolean membership) {
-        CustomerVO user = new CustomerVO(userEmail, userPw, userName, userNickName, userTel, membership);
+    public @ResponseBody CustomerVO updateUser(@RequestParam String userEmail,
+            @RequestParam String userNickName, @RequestParam String userTel
+            ) {
+        CustomerVO user = new CustomerVO(userEmail, "", "", userNickName, userTel, false);
         logger.info("update user : {}", user.toString());
         int number = this.dao.updateUser(userEmail, userTel, userNickName);
         if(0 == number){
@@ -53,6 +52,7 @@ public class AccountController {
         }
         
     }
+
     @GetMapping(value = "/health")
     public @ResponseBody String health() {
         this.dao.health();
