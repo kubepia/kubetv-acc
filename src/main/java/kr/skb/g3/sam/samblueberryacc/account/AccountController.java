@@ -46,7 +46,7 @@ public class AccountController {
         if (0 == number) {
             return null;
         } else {
-            this.dao.getUser(input.getUserEmail());
+            user = this.dao.getUser(input.getUserEmail());
             return user;
         }
 
