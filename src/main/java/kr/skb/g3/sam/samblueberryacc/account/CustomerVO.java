@@ -1,17 +1,14 @@
 package kr.skb.g3.sam.samblueberryacc.account;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * CustomerVO
  */
 public class CustomerVO {
 
-    private static final Logger logger = LoggerFactory.getLogger(CustomerVO.class);
+    // private static final Logger logger = LoggerFactory.getLogger(CustomerVO.class);
     
     CustomerVO(String userEmail, 
-    String userPw,
+    String userPW,
     String userName,
     String userNickName,
     String userTel,
@@ -19,7 +16,7 @@ public class CustomerVO {
         this.userEmail = userEmail;
         this.userName =userName;
         this.userTel =userTel;
-        this.userPW =userPw;
+        this.userPW =userPW;
         this.userNickName =userNickName;
         this.membership = membership;
     }
@@ -87,10 +84,10 @@ public class CustomerVO {
         this.membership = membership;
     }
 
-    @Override
-    public String toString() {
-        logger.info("{} {} {} {} {}", this.userEmail, this.userName, this.userNickName, this.userTel, this.membership);
-        return super.toString();
-    }
+    // @Override
+    // public String toString() {
+    //     logger.info("{} {} {} {} {}", this.userEmail, this.userName, this.userNickName, this.userTel, this.membership);
+    //     return super.toString();
+    // }
 
 }

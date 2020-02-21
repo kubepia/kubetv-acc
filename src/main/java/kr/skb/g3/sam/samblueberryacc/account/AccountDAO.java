@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface AccountDAO {
-        public CustomerVO login(String userEmail, String userPw);
+        public CustomerVO login(String userEmail, String userPW);
         public CustomerVO getUser(String userEmail);
     
         public int updateUser(String userEmail, String userTel, String userNickName);

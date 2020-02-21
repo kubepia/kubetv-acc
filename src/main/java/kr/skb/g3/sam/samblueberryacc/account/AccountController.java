@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,10 +25,10 @@ public class AccountController {
     private AccountDAO dao;
 
     @PostMapping(value = "/login")
-    public @ResponseBody CustomerVO login(@RequestParam String userEmail, @RequestParam String userPw) {
-        logger.info("loggin userEmail : {}", userEmail);
-        CustomerVO user = this.dao.login(userEmail, userPw);
-        return user;
+    public @ResponseBody CustomerVO login(@RequestBody CustomerVO user) {
+        logger.info("loggin userEmail : {}", user.getUserEmail());
+        CustomerVO data = this.dao.login(user.getUserEmail(), user.getUserPW());
+        return data;
     }
 
     @GetMapping(value = "/user/{userEmail}")
@@ -38,19 +39,17 @@ public class AccountController {
     }
 
     @PostMapping(value = "/user")
-    public @ResponseBody CustomerVO updateUser(@RequestParam String userEmail,
-            @RequestParam String userNickName, @RequestParam String userTel
-            ) {
-        CustomerVO user = new CustomerVO(userEmail, "", "", userNickName, userTel, false);
-        logger.info("update user : {}", user.toString());
-        int number = this.dao.updateUser(userEmail, userTel, userNickName);
-        if(0 == number){
+    public @ResponseBody CustomerVO updateUser(@RequestBody CustomerVO input) {
+        CustomerVO user = new CustomerVO(input.getUserEmail(), "", "", input.getUserNickName(), input.getUserTel(), false);
+        // logger.info("update user : {}", user.toString());
+        int number = this.dao.updateUser(input.getUserEmail(), input.getUserTel(), input.getUserNickName());
+        if (0 == number) {
             return null;
-        }else{
-            this.dao.getUser(userEmail);
+        } else {
+            this.dao.getUser(input.getUserEmail());
             return user;
         }
-        
+
     }
 
     @GetMapping(value = "/health")

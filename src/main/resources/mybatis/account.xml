@@ -12,7 +12,7 @@
 		,user_nickname as userNickName
         ,membership
 		FROM user_info
-		WHERE user_email = #{userEmail} and user_pw = #{userPw}
+		WHERE user_email = #{userEmail} and user_pw = #{userPW}
     </select>
     <select id="getUser" resultType="kr.skb.g3.sam.samblueberryacc.account.CustomerVO">
 		SELECT 
