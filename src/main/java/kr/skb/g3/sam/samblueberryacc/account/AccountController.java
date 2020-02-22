@@ -39,7 +39,7 @@ public class AccountController {
 
     @PostMapping(value = "/user")
     public @ResponseBody CustomerVO updateUser(@RequestBody CustomerVO input) {
-        CustomerVO user = new CustomerVO(input.getUserEmail(), "", "", input.getUserNickName(), input.getUserTel(), false);
+        CustomerVO user = new CustomerVO(input.getUserEmail(), "", "", input.getUserNickName(), input.getUserTel(), 0);
         // logger.info("update user : {}", user.toString());
         int number = this.dao.updateUser(input.getUserEmail(), input.getUserTel(), input.getUserNickName());
         if (0 == number) {

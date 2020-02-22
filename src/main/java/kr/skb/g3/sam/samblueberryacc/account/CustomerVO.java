@@ -12,7 +12,7 @@ public class CustomerVO {
     String userName,
     String userNickName,
     String userTel,
-    Boolean membership) {
+    int membership) {
         this.userEmail = userEmail;
         this.userName =userName;
         this.userTel =userTel;
@@ -26,7 +26,7 @@ public class CustomerVO {
         this.userTel = "userTel";
         this.userPW = "userPW";
         this.userNickName = "userNickName";
-        this.membership = false;
+        this.membership = 0;
     }
 
     String userEmail;
@@ -34,7 +34,7 @@ public class CustomerVO {
     String userTel;
     String userPW;
     String userNickName;
-    Boolean membership;
+    int membership;
 
     public String getUserEmail() {
         return userEmail;
@@ -76,11 +76,11 @@ public class CustomerVO {
         this.userNickName = userNickName;
     }
 
-    public Boolean getMembership() {
+    public int getMembership() {
         return membership;
     }
 
-    public void setMembership(Boolean membership) {
+    public void setMembership(int membership) {
         this.membership = membership;
     }
 
