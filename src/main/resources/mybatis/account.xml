@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="io.kubepia.kubetv.account.AccountDAO">
-	<select id="login" resultType="io.kubepia.kubetv.account.CustomerVO">
+	<select id="loginRequest" resultType="io.kubepia.kubetv.account.CustomerVO">
 		SELECT 
 		user_name as userName
 		,user_email as userEmail

@@ -26,7 +26,7 @@ public class AccountController {
     @PostMapping(value = "/login")
     public @ResponseBody CustomerVO login(@RequestBody CustomerVO user) {
         logger.info("loggin userEmail : {}", user.getUserEmail());
-        CustomerVO data = this.dao.login(user.getUserEmail(), user.getUserPW());
+        CustomerVO data = this.dao.loginRequest(user.getUserEmail(), user.getUserPW());
         return data;
     }
 

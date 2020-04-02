@@ -17,6 +17,8 @@ metadata:
   name: account
 data:
   application.properties: |-
+    management.endpoints.web.exposure.include=health,metrics,prometheus,liveness
+    opentracing.jaeger.log-spans = true
     logging.config=classpath:logback.xml
     spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
     spring.datasource.url=jdbc:mariadb://maria-svc:3306/kubetv
