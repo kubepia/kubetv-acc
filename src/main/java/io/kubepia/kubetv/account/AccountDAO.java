@@ -1,17 +1,19 @@
 package io.kubepia.kubetv.account;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * AccountDAO
  */
 @Mapper
 public interface AccountDAO {
-        public CustomerVO login(String userEmail, String userPW);
+        public CustomerVO loginRequest(@Param("userEmail") String userEmail, @Param("userPW") String userPW);
 
-        public CustomerVO getUser(String userEmail);
+        public CustomerVO getUser(@Param("userEmail") String userEmail);
 
-        public int updateUser(String userEmail, String userTel, String userNickName);
+        public int updateUser(@Param("userEmail") String userEmail, @Param("userTel") String userTel,
+                        @Param("userNickName") String userNickName);
 
         public int health();
 

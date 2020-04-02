@@ -12,7 +12,7 @@
             <id>nexus</id>
             <mirrorOf>central</mirrorOf>
             <name>nexus_repo</name>
-            <url>http://nexus.hcp.darumtech.net:8081/repository/maven-central/</url>
+            <url>http://nexus.hcp.darumtech.net:8081/repository/maven-group/</url>
         </mirror>
     </mirrors>
     <profiles>
