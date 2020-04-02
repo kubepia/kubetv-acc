@@ -1,25 +1,22 @@
-package kr.skb.g3.sam.samblueberryacc.account;
+package io.kubepia.kubetv.account;
 
 /**
  * CustomerVO
  */
 public class CustomerVO {
 
-    // private static final Logger logger = LoggerFactory.getLogger(CustomerVO.class);
-    
-    CustomerVO(String userEmail, 
-    String userPW,
-    String userName,
-    String userNickName,
-    String userTel,
-    int membership) {
+    // private static final Logger logger =
+    // LoggerFactory.getLogger(CustomerVO.class);
+
+    CustomerVO(String userEmail, String userPW, String userName, String userNickName, String userTel, int membership) {
         this.userEmail = userEmail;
-        this.userName =userName;
-        this.userTel =userTel;
-        this.userPW =userPW;
-        this.userNickName =userNickName;
+        this.userName = userName;
+        this.userTel = userTel;
+        this.userPW = userPW;
+        this.userNickName = userNickName;
         this.membership = membership;
     }
+
     CustomerVO() {
         this.userEmail = "userEmail";
         this.userName = "userName";
@@ -86,8 +83,9 @@ public class CustomerVO {
 
     // @Override
     // public String toString() {
-    //     logger.info("{} {} {} {} {}", this.userEmail, this.userName, this.userNickName, this.userTel, this.membership);
-    //     return super.toString();
+    // logger.info("{} {} {} {} {}", this.userEmail, this.userName,
+    // this.userNickName, this.userTel, this.membership);
+    // return super.toString();
     // }
 
 }

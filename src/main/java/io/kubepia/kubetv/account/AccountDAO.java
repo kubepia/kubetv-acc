@@ -1,4 +1,4 @@
-package kr.skb.g3.sam.samblueberryacc.account;
+package io.kubepia.kubetv.account;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -8,10 +8,11 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface AccountDAO {
         public CustomerVO login(String userEmail, String userPW);
+
         public CustomerVO getUser(String userEmail);
-    
+
         public int updateUser(String userEmail, String userTel, String userNickName);
+
         public int health();
-    
-    
+
 }

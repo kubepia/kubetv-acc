@@ -1,4 +1,4 @@
-package kr.skb.g3.sam.samblueberryacc;
+package io.kubepia.kubetv;
 
 import java.io.IOException;
 import java.util.UUID;
@@ -17,11 +17,12 @@ import ch.qos.logback.classic.ClassicConstants;
 
 public class MdcLoggingFilter implements Filter {
 
-	public void destroy() {
+    public void destroy() {
         // do nothing
     }
 
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+            throws IOException, ServletException {
 
         insertIntoMDC(request);
         try {
@@ -30,14 +31,14 @@ public class MdcLoggingFilter implements Filter {
             clearMDC();
         }
     }
-    
-	protected void insertIntoMDC(ServletRequest request) {
-		MDC.put(ClassicConstants.REQUEST_REMOTE_HOST_MDC_KEY, request.getRemoteHost());
-		
-		String uuid = MDC.get("UUID");
-		if (uuid == null) {
-			MDC.put("UUID", UUID.randomUUID().toString());
-		}
+
+    protected void insertIntoMDC(ServletRequest request) {
+        MDC.put(ClassicConstants.REQUEST_REMOTE_HOST_MDC_KEY, request.getRemoteHost());
+
+        String uuid = MDC.get("UUID");
+        if (uuid == null) {
+            MDC.put("UUID", UUID.randomUUID().toString());
+        }
 
         if (request instanceof HttpServletRequest) {
             HttpServletRequest httpServletRequest = (HttpServletRequest) request;
@@ -51,10 +52,10 @@ public class MdcLoggingFilter implements Filter {
             MDC.put(ClassicConstants.REQUEST_USER_AGENT_MDC_KEY, httpServletRequest.getHeader("User-Agent"));
             MDC.put(ClassicConstants.REQUEST_X_FORWARDED_FOR, httpServletRequest.getHeader("X-Forwarded-For"));
         }
-	}
-	
-	void clearMDC() {
-		MDC.remove("UUID");
+    }
+
+    void clearMDC() {
+        MDC.remove("UUID");
         MDC.remove(ClassicConstants.REQUEST_REMOTE_HOST_MDC_KEY);
         MDC.remove(ClassicConstants.REQUEST_REQUEST_URI);
         MDC.remove(ClassicConstants.REQUEST_QUERY_STRING);

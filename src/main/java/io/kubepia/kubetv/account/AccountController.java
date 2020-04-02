@@ -1,4 +1,4 @@
-package kr.skb.g3.sam.samblueberryacc.account;
+package io.kubepia.kubetv.account;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
